@@ -7,7 +7,7 @@
     function createUser($pdo, $payload) {
       $statement = $pdo->prepare('INSERT INTO `accounts` (id, google_id) VALUES (null, ?);');
       try {
-        if ($statement->execute([$payload['sub']]) == false) {
+        if ($statement->execute([$payload['sub']]) == false) {  
           die;
         }
       }
