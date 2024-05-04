@@ -4,10 +4,10 @@
     $pdo = new PDO("mysql:host=localhost;  dbname=map_app;", $dbLoginUsername, $dbLoginPassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    function createUser($pdo, $payload) {
+    function createUser($pdo, $id) {
       $statement = $pdo->prepare('INSERT INTO `accounts` (id, google_id) VALUES (null, ?);');
       try {
-        if ($statement->execute([$payload['sub']]) == false) {  
+        if ($statement->execute([$id]) == false) {  
           die;
         }
       }
@@ -27,7 +27,7 @@
             $statement = $pdo->prepare('SELECT * FROM accounts WHERE google_id = ?;');
             $statement->execute([$payload['sub']]);
             if ($statement->rowCount() < 1) {
-              createUser($pdo, $payload);
+              createUser($pdo, $payload['sub']);
               $statement = $pdo->prepare('SELECT * FROM accounts WHERE google_id = ?;');
               $statement->execute([$payload['sub']]);
             }

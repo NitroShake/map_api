@@ -1,0 +1,1 @@
+{"version":1,"defects":{"unitTests::createUser":7,"unitTests::createBookmark":7,"unitTests::getBookmarks":7,"unitTests::deleteBookmark":7},"times":{"unitTests::createUser":0.008,"unitTests::createBookmark":0.006,"unitTests::getBookmarks":0.002,"unitTests::deleteBookmark":0.002}}
